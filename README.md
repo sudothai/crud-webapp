@@ -69,4 +69,6 @@ Publisher: Florian Klampfer
 VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=qwtel.sqlite-viewer
 ```
 
+Create `/lib/server/prisma.ts`, the server directory will prevent SvelteKit from running the code on the client. All communications to the database should only be communicated from the server side.
 
+When running in development mode, SvelteKit hot reloads with each change, this may create multiple prisma client instances. To solve this, add the prisma client as a global variable in development mode.
