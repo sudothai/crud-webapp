@@ -1,18 +1,28 @@
+<script lang="ts">
+    import type { PageData } from './$types'
+
+    export let data: PageData
+
+    $: ({ articles } = data)
+</script>
+
 <div class="grid">
 	<div>
 		<h2>Articles:</h2>
+        {#each articles as article}
 			<article>
-				<header>Example Article</header>
+				<header>{article.title}</header>
 				<p>
-					This is an article content!
+                    {article.content}
 				</p>
                 <button class="outline secondary">Delete Article</button>
 				<a href="/" role="button" class="outline constrast" style="width: 100%;"
 					>Edit Article</a
 				>
 			</article>
+        {/each}
 	</div>
-	<form action="" method="POST">
+	<form action="?/createArticle" method="POST">
 		<h3>New Article</h3>
 		<label for="title"> Title </label>
 		<input type="text" id="title" name="title" />
